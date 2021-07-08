@@ -1,6 +1,14 @@
 import random
 
 elements = ["fire", "grass", "water"]
+# fire > grass
+# grass > water
+# water > fire
+# if > 1.5 // if < 0.5
+#     fire grass water
+# Fire    1   1.5   0.5
+# GRass  0.5   1    1.5
+# water  1.5   0.5   1
 
 class Pokemon:
     def __init__(self, name, element, HP):
@@ -17,7 +25,27 @@ class Pokemon:
 
     def recive_damage(self, attack):
         damage = random.randint(0, attack.damage)
-        self.HP -= damage
+        print(damage)
+        print(attack.element)
+        print(self.element)
+        if self.element == attack.element:
+            self.HP -= damage
+        else:
+            if attack.element == "fire":
+                if self.element == "grass":
+                    self.HP -= damage * 1.5
+                elif self.element == "water":
+                    self.HP -= damage * 0.5
+            elif attack.element == "grass":
+                if self.element == "water":
+                    self.HP -= damage * 1.5
+                elif self.element == "fire":
+                    self.HP -= damage * 0.5
+            elif attack.element == "water":
+                if self.element == "fire":
+                    self.HP -= damage * 1.5
+                elif self.element == "grass":
+                    self.HP -= damage * 0.5
 
 class Attack:
     def __init__(self, name, element, damage):
@@ -32,27 +60,5 @@ class Attack:
         return f"{self.name}: {self.damage}"
 
 
-charmander = Pokemon("Charmander", elements[0], 120)
-squirtle = Pokemon("Squirtle", elements[2], 140)
-bulbasaur = Pokemon("Bulbasaur", elements[1], 160)
-
-flamethrower = Attack("Flamethrower", elements[0], 40)
-razor_leaf = Attack("Razor_leaf", elements[1], 25)
-surf = Attack("Surf", elements[2], 35)
-
-charmander.learn(flamethrower)
-charmander.learn(razor_leaf)
-bulbasaur.learn(razor_leaf)
-print(charmander)
-print("----------------")
-print(bulbasaur)
-print("----------------")
-
-for i, attack in enumerate(charmander.attacks):
-    print(f"{i+1}. {attack}")
-
-user = int(input("Opcion: "))
-bulbasaur.recive_damage(charmander.attacks[user -1])
-print(bulbasaur)
 
 
