@@ -1,3 +1,5 @@
+# https://github.com/vgenov-py/T-522/blob/master/pokemon.md
+
 import random
 
 elements = ["fire", "grass", "water"]
@@ -60,5 +62,13 @@ class Attack:
         return f"{self.name}: {self.damage}"
 
 
+# POKEMONS
+charmander = Pokemon("Charmander", elements[0], 120)
+squirtle = Pokemon("Squirtle", elements[2], 140)
+bulbasaur = Pokemon("Bulbasaur", elements[1], 160)
 
+# ATTACKS
+flamethrower = Attack("Flamethrower", elements[0], 40)
+razor_leaf = Attack("Razor_leaf", elements[1], 25)
+surf = Attack("Surf", elements[2], 35)
 
