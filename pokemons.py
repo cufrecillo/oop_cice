@@ -18,9 +18,13 @@ class Pokemon:
         self.element = element
         self.HP = HP
         self.attacks = []
+        self.is_alive = True
 
     def __str__(self):
-        return f"name: {self.name}\ntype: {self.element}\nHP: {self.HP}\nattacks: {self.attacks}"
+        if self.is_alive == True:
+            return f"name: {self.name}\ntype: {self.element}\nHP: {self.HP}\nattacks: {self.attacks}"
+        else:
+            return f"El pokemon name: {self.name} fue derrotado..."
 
     def learn(self, attack):
         return self.attacks.append(attack)
@@ -48,6 +52,8 @@ class Pokemon:
                     self.HP -= damage * 1.5
                 elif self.element == "grass":
                     self.HP -= damage * 0.5
+        if self.HP <= 0:
+            self.is_alive = False
 
 class Attack:
     def __init__(self, name, element, damage):
@@ -72,3 +78,9 @@ flamethrower = Attack("Flamethrower", elements[0], 40)
 razor_leaf = Attack("Razor_leaf", elements[1], 25)
 surf = Attack("Surf", elements[2], 35)
 
+charmander.learn(flamethrower)
+charmander.learn(razor_leaf)
+bulbasaur.learn(razor_leaf)
+squirtle.learn(surf)
+
+pokemons = [charmander, squirtle, bulbasaur]
