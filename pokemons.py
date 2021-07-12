@@ -14,12 +14,20 @@ elements = ["fire", "grass", "water"]
 # water  1.5   0.5   1
 
 class Pokemon:
+
+    count = 0
+
+    @classmethod
+    def set_count(cls):
+        cls.count += 1
+
     def __init__(self, name, element, HP):
         self.name = name
         self.element = element
         self.HP = HP
         self.attacks = []
         self.is_alive = True
+        Pokemon.set_count()
 
     def __str__(self):
         if self.is_alive == True:
@@ -32,11 +40,11 @@ class Pokemon:
 
     def recive_damage(self, attack):
         damage = random.randint(0, attack.damage)
-        print(damage)  # damage sin multiplicar
         print(attack.element)
         print(self.element)
         if self.element == attack.element:
-            self.HP -= damage
+            damage_final = damage
+            self.HP -= damage_final
         else:
             if attack.element == "fire":
                 if self.element == "grass":
@@ -75,12 +83,14 @@ class Attack:
     def __repr__(self):
         return f"{self.name}: {self.damage}"
 
-
+# elements = ["fire", "grass", "water"]
 # POKEMONS
 charmander = Pokemon("Charmander", elements[0], 120)
 squirtle = Pokemon("Squirtle", elements[2], 140)
 bulbasaur = Pokemon("Bulbasaur", elements[1], 160)
 vulpix = Pokemon("Vulpix", elements[0], 100)
+golduck = Pokemon("Golduck", elements[2], 150)
+meganium = Pokemon("Meganium", elements[1], 170)
 
 # ATTACKS
 flamethrower = Attack("Flamethrower", elements[0], 40)
@@ -90,7 +100,12 @@ surf = Attack("Surf", elements[2], 35)
 charmander.learn(flamethrower)
 charmander.learn(razor_leaf)
 bulbasaur.learn(razor_leaf)
+bulbasaur.learn(surf)
 squirtle.learn(surf)
 vulpix.learn(flamethrower)
+golduck.learn(surf)
+golduck.learn(razor_leaf)
+meganium.learn(razor_leaf)
 
-pokemons = [charmander, squirtle, bulbasaur, vulpix]
+pokemons = [charmander, squirtle, bulbasaur, vulpix, golduck, meganium]
+print(Pokemon.count)
