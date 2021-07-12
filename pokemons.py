@@ -1,6 +1,7 @@
 # https://github.com/vgenov-py/T-522/blob/master/pokemon.md
 
 import random
+from funs import *
 
 elements = ["fire", "grass", "water"]
 # fire > grass
@@ -58,7 +59,7 @@ class Pokemon:
                 elif self.element == "grass":
                     damage_final = damage *0.5
                     self.HP -= damage_final
-            print(f"{self.name} recibe un daño de: {damage_final}")
+        print(f"{self.name} recibe un daño de: {damage_final}")
         if self.HP <= 0:
             self.is_alive = False
 
@@ -79,6 +80,7 @@ class Attack:
 charmander = Pokemon("Charmander", elements[0], 120)
 squirtle = Pokemon("Squirtle", elements[2], 140)
 bulbasaur = Pokemon("Bulbasaur", elements[1], 160)
+vulpix = Pokemon("Vulpix", elements[0], 100)
 
 # ATTACKS
 flamethrower = Attack("Flamethrower", elements[0], 40)
@@ -89,5 +91,6 @@ charmander.learn(flamethrower)
 charmander.learn(razor_leaf)
 bulbasaur.learn(razor_leaf)
 squirtle.learn(surf)
+vulpix.learn(flamethrower)
 
-pokemons = [charmander, squirtle, bulbasaur]
+pokemons = [charmander, squirtle, bulbasaur, vulpix]
