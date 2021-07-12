@@ -31,7 +31,7 @@ class Pokemon:
 
     def recive_damage(self, attack):
         damage = random.randint(0, attack.damage)
-        print(damage)
+        print(damage)  # damage sin multiplicar
         print(attack.element)
         print(self.element)
         if self.element == attack.element:
@@ -39,19 +39,26 @@ class Pokemon:
         else:
             if attack.element == "fire":
                 if self.element == "grass":
-                    self.HP -= damage * 1.5
+                    damage_final = damage *1.5
+                    self.HP -= damage_final
                 elif self.element == "water":
-                    self.HP -= damage * 0.5
+                    damage_final = damage *0.5
+                    self.HP -= damage_final
             elif attack.element == "grass":
                 if self.element == "water":
-                    self.HP -= damage * 1.5
+                    damage_final = damage *1.5
+                    self.HP -= damage_final
                 elif self.element == "fire":
-                    self.HP -= damage * 0.5
+                    damage_final = damage *0.5
+                    self.HP -= damage_final
             elif attack.element == "water":
                 if self.element == "fire":
-                    self.HP -= damage * 1.5
+                    damage_final = damage *1.5
+                    self.HP -= damage_final
                 elif self.element == "grass":
-                    self.HP -= damage * 0.5
+                    damage_final = damage *0.5
+                    self.HP -= damage_final
+            print(f"{self.name} recibe un daño de: {damage_final}")
         if self.HP <= 0:
             self.is_alive = False
 
