@@ -24,7 +24,7 @@ class Pokemon:
         if self.is_alive == True:
             return f"name: {self.name}\ntype: {self.element}\nHP: {self.HP}\nattacks: {self.attacks}"
         else:
-            return f"El pokemon name: {self.name} fue derrotado..."
+            return f"El pokemon {self.name} fue derrotado..."
 
     def learn(self, attack):
         return self.attacks.append(attack)

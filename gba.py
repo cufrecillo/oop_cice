@@ -16,12 +16,18 @@ print("Te vas a enfrentar a...")
 print(pokemon_b)
 print("----------------")
 
-while pokemon_b.is_alive:
+cont_turnos = 0
+pokemon_alive = True
+
+while pokemon_alive:
+    cont_turnos += 1
     print("Elige un ataque de tu pokemon:")
     for i, attack in enumerate(pokemon_a.attacks):
         print(f"{i+1}. {attack}")
     user = int(input("Opcion: "))
     pokemon_b.recive_damage(pokemon_a.attacks[user -1])
-
     print("----------------")
+    print(f"Turno :{cont_turnos}")
     print(pokemon_b)
+    if pokemon_b.is_alive == False:
+        pokemon_alive = False
