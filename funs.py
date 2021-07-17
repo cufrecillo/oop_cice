@@ -17,10 +17,16 @@ def combat(pokemon_atack, pokemon_defen):
     print("----------------")
     print(pokemon_defen)
 
-def change_pokemon(pokemons_player):
-    pokemon_change = print("En construccion cambiar de Pokemon")
+def change_pokemon(pokemons_player, pokemon_atack):
+    rest_pokemons = pokemons_player.copy()
+    rest_pokemons.remove(pokemon_atack)
+    print("----------------")
     print("Tus pokemos:")
-    [print(f"{i+1}. {pokemon.name}") for i, pokemon in enumerate(pokemons_player)]
+    [print(f"{i+1}. {pokemon.name}") for i, pokemon in enumerate(rest_pokemons)]
+    user = int(input("Pokemon: "))-1
+    pokemon_change = rest_pokemons[user]
+    print("----------------")
+    print(f"Has cambiado a {rest_pokemons[user]}")
     return pokemon_change
 
 def turno_pj(pokemons_player, pokemon_atack, pokemon_defen, cont_turnos, option_submenu_ok):
@@ -31,7 +37,7 @@ def turno_pj(pokemons_player, pokemon_atack, pokemon_defen, cont_turnos, option_
         combat(pokemon_atack, pokemon_defen)
         option_submenu_ok = False
     elif option_menu_combat == 1:
-        change_pokemon(pokemons_player)
+        pokemon_atack = change_pokemon(pokemons_player, pokemon_atack)
         option_submenu_ok = False
-    return option_submenu_ok
+    return option_submenu_ok, pokemon_atack
 

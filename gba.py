@@ -33,13 +33,13 @@ while pokemon_alive:
 
     option_submenu_ok = True
     while option_submenu_ok:
-        option_submenu_ok = turno_pj(pokemons_playerA, pokemon_a, pokemon_b, cont_turnos, option_submenu_ok)
+        option_submenu_ok, pokemon_a = turno_pj(pokemons_playerA, pokemon_a, pokemon_b, cont_turnos, option_submenu_ok)
     if pokemon_b.is_alive == False:
         pokemon_alive = False
     else:
         option_submenu_ok = True
         while option_submenu_ok:
-            option_submenu_ok = turno_pj(pokemons_playerB, pokemon_b, pokemon_a, cont_turnos, option_submenu_ok)
+            option_submenu_ok, pokemon_b = turno_pj(pokemons_playerB, pokemon_b, pokemon_a, cont_turnos, option_submenu_ok)
         if pokemon_a.is_alive == False:
             pokemon_alive = False
 
